@@ -1,45 +1,70 @@
-# OIBSIP_dataanalytics_task3
+# 🧠 Customer Segmentation using K-Means Clustering
 
-### 📌 Internship: AICTE OIB-SIP July 2025  
-### 📁 Domain: Data Analytics  
-### 🧠 Task Level: Level 1  
-### 📝 Task Number: 3  
-### 👩🏻 Name: Abhignya Ratnala  
+This project is part of my Data Analytics Internship at **Oasis Infobyte**, focused on segmenting customers using **K-Means clustering** based on their demographics and purchasing behavior. The goal is to help businesses understand their customer base and tailor marketing strategies accordingly.
 
-## 🧾 Task Title: Customer Segmentation Analysis
+## 📁 Dataset
+- **Source**: `ifood_df (1).csv`
 
-### 📌 Objective:
-Perform Exploratory Data Analysis (EDA) on the iFood dataset to identify customer behavior patterns and uncover business insights.
+## 📌 Key Steps
 
-## 🔧 Steps Performed:
+### 📦 1. Project Setup & Data Loading
+- Imported libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`, `sklearn`
+- Loaded the dataset into a Pandas DataFrame
+- Initial data exploration: `.info()`, `.describe()`, `.nunique()`
 
-1. **Data Loading**
-   - Imported dataset `ifood_df.csv` using pandas.
+### 🧹 2. Data Cleaning & Preprocessing
+- Removed non-informative columns: `Z_CostContact`, `Z_Revenue`
+- Detected and removed outliers from `MntTotal` and other numerical columns using **IQR method**
+- Engineered a new feature: **`Frequency`** = sum of all purchase channels
+- Created a cleaned DataFrame `df_cleaned` for further analysis
 
-2. **Data Cleaning**
-   - Handled null values, checked for duplicates, formatted columns.
+### 📊 3. Exploratory Data Analysis
+- Visualized distributions of **Age** and **Income**
+- Box plots to understand income distribution by customer cluster
 
-3. **Data Analysis**
-   - Analyzed demographic and behavioral features (age, income, campaign responses, etc.).
+### 📈 4. Feature Selection & Scaling
+- Selected features: `Recency`, `Frequency`, `MntTotal`, `Income`, `Age`
+- Standardized features using `StandardScaler`
 
-4. **Data Visualization**
-   - Used Seaborn and Matplotlib for visual analysis:
-     - Distribution plots
-     - Correlation heatmap
-     - Spending patterns
+### 🔍 5. K-Means Clustering
+- Used **Elbow Method** and **Silhouette Score** to determine optimal number of clusters (`k`)
+- Chose **k = 3** based on analysis
+- Applied K-Means and assigned cluster labels
 
-## 🛠 Tools & Technologies Used:
-- Python (Jupyter Notebook)
-- Pandas, NumPy
-- Matplotlib, Seaborn
+### 📉 6. Dimensionality Reduction & Visualization
+- Applied **PCA** to reduce features to 2 components
+- Visualized clusters in a 2D space using scatter plots
 
-## 🔗 LinkedIn Post:
+### 🧠 7. Cluster Analysis
+- Merged cluster labels with original data
+- Analyzed average feature values for each cluster
+- Visualized spending behavior across product categories by cluster
+- Calculated size and percentage share of each segment
 
- 
-## 📂 Dataset:
-- `ifood_df
+## 🎯 Customer Segments Identified
 
-## ✅ Outcome:
-This project demonstrates analytical skills by deriving insights from raw data, visualizing trends, and forming conclusions that can support business decisions.
+| Cluster | Description                     |
+|---------|---------------------------------|
+| 0       | **High-Value Churn Risk**       |
+| 1       | **High-Value Loyal Customers**  |
+| 2       | **Budget-Conscious Starters**   |
 
- ⚠️ This project is submitted for internship evaluation under AICTE OIB-SIP July 2025. All rights reserved.
+
+## ✅ Recommendations
+
+- 🎯 **Cluster 0**: Retention campaigns, loyalty benefits
+- 🌟 **Cluster 1**: Upselling opportunities, premium offers
+- 💡 **Cluster 2**: Budget product recommendations, referral incentives
+
+## 📌 Tools & Libraries Used
+
+- Python (Pandas, Numpy, Scikit-learn)
+- Matplotlib & Seaborn for Visualization
+- K-Means Clustering
+- PCA for dimensionality reduction
+
+## 📂 Project Structure
+```bash
+├── ifood_df.csv
+├── customer_segmentation.ipynb
+├── README.md
